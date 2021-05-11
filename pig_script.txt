@@ -1,0 +1,17 @@
+hesitancy_dirty = LOAD '/user/jdiaz231/project1/CIS_CSV_Selected_States_Dataset.csv' using PigStorage(',');
+
+hesitancy_clean = FOREACH hesitancy_dirty generate (chararray) $1 as County, (chararray) $2 as State, (double) $3 as EstimatedHesitancy, (double) $4 as StrongHesitancy;
+
+StateHesitancy_Descending = ORDER hesitancy_clean BY EstimatedHesitancy DESC;
+DUMP StateHesitancy_Descending LIMIT 5;
+
+StateHesitancy_Ascending = ORDER hesitancy_clean BY EstimatedHesitancy ASC;
+DUMP StateHesitancy_Ascending LIMIT 5;
+
+
+
+
+
+
+
+
